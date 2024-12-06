@@ -1,3 +1,4 @@
+import { Badge } from '~/components/ui/badge';
 import {
 	Card,
 	CardContent,
@@ -17,8 +18,21 @@ export default async function Home() {
 			{releases.map(release => (
 				<Card key={release.id}>
 					<CardHeader>
-						<CardTitle>{release.name}</CardTitle>
-						<CardDescription>{release.body}</CardDescription>
+						<CardTitle className='flex items-center gap-4'>
+							<p>{release.name}</p>
+							{release.prerelease && (
+								<Badge className='rounded-full bg-blue-600 hover:bg-blue-700'>
+									Pre-Release
+								</Badge>
+							)}
+						</CardTitle>
+						<CardDescription>
+							<p>description: {release.body}</p>
+							<p>
+								published:{' '}
+								{new Date(release.published_at!).toLocaleString('ja-JP')}
+							</p>
+						</CardDescription>
 					</CardHeader>
 					<CardContent>
 						{release.assets.map(asset => (
