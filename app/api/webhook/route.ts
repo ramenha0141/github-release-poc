@@ -6,4 +6,6 @@ export async function POST(req: Request) {
 	if (eventName === 'release') {
 		revalidateTag('releases');
 	}
+
+	return new Response();
 }
