@@ -7,6 +7,8 @@ import {
 } from '~/components/ui/card';
 import { getReleases } from '~/lib/github';
 
+export const revalidate = 86400;
+
 export default async function Home() {
 	const releases = await getReleases();
 
